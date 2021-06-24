@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flight-svc
+  labels:
+    name: web
+    app: demo
+spec:
+  selector:
+    app: flight
+  type: NodePort
+  ports:
+   - port: 80
+     targetPort: 80
+     protocol: TCP
