@@ -22,7 +22,7 @@ def index():
 @socketio.event
 def my_event(message):
     session['receive_count'] = session.get('receive_count', 0) + 1
-    session['seat'] = session.get('seat', 50) - 1
+    session['seat'] = session.get('seat', 51) - 1
     emit('my_response',
          {'data': session['seat'], 'count': session['receive_count']})
 
