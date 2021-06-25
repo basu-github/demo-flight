@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: flight-svc
   labels:
-    name: web
     app: demo
 spec:
   selector:
@@ -13,3 +12,4 @@ spec:
    - port: 80
      targetPort: 80
      protocol: TCP
+     nodePort: 32300

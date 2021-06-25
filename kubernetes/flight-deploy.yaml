@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flight
+  name: flight
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flight
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flight
+    spec:
+      containers:
+      - image: basu2019/flightapp:latest
+        name: flightapp
+        resources: {}
+status: {}
