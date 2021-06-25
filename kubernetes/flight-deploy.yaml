@@ -18,7 +18,7 @@ spec:
         app: flight
     spec:
       containers:
-      - image: basu2019/flightapp:latest
+      - image: basu2019/flightapp:v1
         name: flightapp
         resources: {}
 status: {}
