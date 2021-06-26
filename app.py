@@ -109,5 +109,5 @@ def test_disconnect():
 if __name__ == '__main__':
     create_db()
     time.sleep(2)
-    insert_values_db('flight', 50, "dummy", time.ctime(), 'basu')
+    insert_values_db('flight', 60, "dummy", time.ctime(), 'basu')
     socketio.run(app, host='0.0.0.0',port=80)
