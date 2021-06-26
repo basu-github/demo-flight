@@ -52,6 +52,11 @@
                 if (cb)
                     cb();
             });
+            socket.on('my_status', function(msg, cb) {                
+                $('#log').append('<br>' + $('<div/>').text('Now Available Seats: ' + ' '+ ': ' + msg.data).html());
+                if (cb)
+                    cb();
+            });
 
             // Interval function that tests message latency by sending a "ping"
             // message. The server then responds with a "pong" message and the
@@ -77,7 +82,7 @@
                 $('#ping-pong').text(Math.round(10 * sum / ping_pong_times.length) / 10);
             });
 			
-			$('form#choice').submit(function(event) {
+		$('form#choice').submit(function(event) {
                 socket.emit('my_book', {data: 1});
                 return false;
             });

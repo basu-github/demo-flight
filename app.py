@@ -90,8 +90,8 @@ def my_book(message):
       result = cur.fetchall()
     num_seats = result[-1][2]
     session['seat'] = session.get('seat', num_seats) - 1
-    emit('my_response',
-         {'data': session['seat'], 'count': session['receive_count']})
+    emit('my_status',
+         {'data': session['seat'], 'count': session['receive_count']},broadcast=True)
 
 
 
