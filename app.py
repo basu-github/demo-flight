@@ -31,7 +31,7 @@ def create_db():
     LOGGER.info("Opened database successfully")
 
     conn.execute('CREATE TABLE if not exists bookingstatus (ID INTEGER PRIMARY KEY autoincrement,\
-                  JOBNAME TEXT, SEATID INT, STATUS TEXT, STARTTIME TEXT, ENDTIME TEXT,\
+                  JOBNAME TEXT, SEATID INT,STARTTIME TEXT, ENDTIME TEXT,\
                   USERNAME TEXT)')
     #conn.execute('ALTER TABLE bookingstatus ADD REPORTSTATUS TEXT')
     LOGGER.info("Table created successfully")
@@ -45,9 +45,9 @@ def insert_values_db(project, seatid, status, time, username):
     '''
     with sqlite3.connect("database.db") as con:
         cur = con.cursor()
-        cur.execute("INSERT INTO bookingstatus (JOBNAME, SEATID, STATUS, STARTTIME, ENDTIME,\
-                     USERNAME, REPORTSTATUS) VALUES (?,50,?,?,?,?,?)"\
-                     , (project, seatid, status, time, 'None', username))
+        cur.execute("INSERT INTO bookingstatus (JOBNAME, SEATID, STARTTIME, ENDTIME,\
+                     USERNAME, REPORTSTATUS) VALUES (?,?,?,?,?,?)"\
+                     , (project, seatid, status, time, 'None',username))
         con.commit()
         msg = "Record successfully added"
         cur.execute("SELECT * from bookingstatus")
@@ -88,7 +88,6 @@ def my_book(message):
       cur.execute("SELECT * from bookingstatus")
       conn.commit()
       result = cur.fetchall()
-    print(result, '\n')
     num_seats = result[-1][2]
     session['seat'] = session.get('seat', num_seats) - 1
     emit('my_response',
@@ -109,5 +108,5 @@ def test_disconnect():
 if __name__ == '__main__':
     create_db()
     time.sleep(2)
-    insert_values_db('flight', 60, "dummy", time.ctime(), 'basu')
+    insert_values_db('flight', 60,"dummy", time.ctime(), 'basu')
     socketio.run(app, host='0.0.0.0',port=80)
