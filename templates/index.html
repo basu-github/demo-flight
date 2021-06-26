@@ -52,7 +52,7 @@
                 if (cb)
                     cb();
             });
-            socket.on('my_status', function(msg, cb) {                
+            socket.on('my_status', function(msg, cb) {
                 $('#log').append('<br>' + $('<div/>').text('Now Available Seats: ' + ' '+ ': ' + msg.data).html());
                 if (cb)
                     cb();
